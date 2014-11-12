@@ -9,3 +9,4 @@ type Statement = PStatement LexPos
 type SetClause = PSetClause LexPos
 type VarString = PVarString LexPos
 type Expression = PExpression LexPos
+type Identifier = PIdentifier LexPos

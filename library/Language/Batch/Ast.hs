@@ -17,11 +17,11 @@ data PStatement annot_type
     stmt_annot :: annot_type
   }
   | Label {
-    stmt_label :: LabelName,
+    stmt_label :: LabelName annot_type,
     stmt_annot :: annot_type
   }
   | Goto {
-    stmt_label :: LabelName,
+    stmt_label :: LabelName annot_type,
     stmt_annot :: annot_type
   }
   | Set {
@@ -33,33 +33,33 @@ data PStatement annot_type
 data PSetClause annot_type
   -- SET variable=string
   = StrAssign {
-    set_ident :: Identifier,
+    set_ident :: PIdentifier annot_type,
     set_varstrs :: [PVarString annot_type],
     set_annot :: annot_type
   }
   -- SET /A variable=expression
   | ArithAssign {
-    set_ident :: Identifier,
+    set_ident :: PIdentifier annot_type,
     set_expr :: PExpression annot_type,
     set_annot :: annot_type
   }
   -- SET /P variable=[promptString]
   | PromptAssign {
-    set_ident :: Identifier,
+    set_ident :: PIdentifier annot_type,
     set_prompt :: [PVarString annot_type],
     set_annot :: annot_type
   }
   -- SET variable
   -- SET "
   | SetDisplay {
-    set_ident :: Identifier,
+    set_ident :: PIdentifier annot_type,
     set_annot :: annot_type
   }
   deriving (Eq, Read, Show)
 
 data PVarString annot_type
   = Variable {
-    varstr_ident :: Identifier,
+    varstr_ident :: PIdentifier annot_type,
     varstr_annot :: annot_type
   }
   | String {
@@ -74,14 +74,19 @@ data PExpression annot_type
     expr_annot :: annot_type
   }
   | ExprVar {
-    expr_ident :: Identifier,
+    expr_ident :: PIdentifier annot_type,
     expr_annot :: annot_type
   }
   deriving (Eq, Read, Show)
 
-type Identifier = String
+data PIdentifier annot_type
+  = Identifier {
+    ident_ident :: String,
+    ident_annot :: annot_type
+  }
+  deriving (Eq, Read, Show)
 
-type LabelName = String
+type LabelName = PIdentifier
 
 class AstNode node_type where
   annot :: node_type annot -> annot
@@ -100,3 +105,6 @@ instance AstNode PVarString where
 
 instance AstNode PExpression where
   annot = expr_annot
+
+instance AstNode PIdentifier where
+  annot = ident_annot
