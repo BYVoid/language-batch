@@ -3,6 +3,7 @@ module Language.Batch.Token where
 data Token
   = Identifier String
   | String String
+  | Int Int
   | Label String
   | Rem String
   | DoubleColon String

@@ -19,6 +19,7 @@ Library
   Build-Tools:          alex >= 3.1.3, happy >= 1.19.4
   Exposed-Modules:      Language.Batch,
                         Language.Batch.Ast,
+                        Language.Batch.Ast.Positioned,
                         Language.Batch.Lexer,
                         Language.Batch.Parser,
                         Language.Batch.Token

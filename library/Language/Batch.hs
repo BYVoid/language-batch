@@ -1,6 +1,6 @@
 module Language.Batch where
 
-import qualified Language.Batch.Ast as Ast
+import qualified Language.Batch.Ast.Positioned as Ast
 import qualified Language.Batch.Lexer as Lexer
 import qualified Language.Batch.Parser as Parser
 import qualified Language.Batch.Token as Token
@@ -8,8 +8,8 @@ import qualified Language.Batch.Token as Token
 lex :: String -> [Token.Lexeme]
 lex code = Lexer.scanLexemes code
 
-parse :: String -> Ast.PProgram ()
-parse code = Ast.Program [] ()
+parse :: String -> Ast.Program
+parse code = Parser.parse code
 
-generateCodeToFile :: Ast.PProgram () -> FilePath -> IO ()
+generateCodeToFile :: Ast.Program -> FilePath -> IO ()
 generateCodeToFile program filename = do return ()
