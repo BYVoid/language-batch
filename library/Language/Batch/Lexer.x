@@ -14,6 +14,20 @@ $hex_digit =  [0-9A-Fa-f]
 $large =      [A-Z \xc0-\xd6 \xd8-\xde]
 $small =      [a-z \xdf-\xf6 \xf8-\xff \_]
 $alpha =      [$small $large]
+$a =          [aA]
+$c =          [cC]
+$d =          [dD]
+$e =          [eE]
+$f =          [fF]
+$g =          [gG]
+$i =          [iI]
+$l =          [lL]
+$m =          [mM]
+$n =          [nN]
+$o =          [oO]
+$r =          [rR]
+$s =          [sS]
+$t =          [tT]
 
 @identifier = [$alpha $underscore] [$alpha $digit $underscore]*
 
@@ -41,8 +55,55 @@ $charesc = [abfnrtv\\\"\'\&]
 
 tokens :-
   $white+     { skip }
+  $r$e$m ' ' .* { makeStringLexeme $ \s -> Rem $ drop 4 s }
+  "::".*      { makeStringLexeme $ \s -> Rem $ drop 2 s }
+  ':'         { makeStringLexeme Label }
+  $c$a$l$l    { makeLexeme Call }
+  $g$o$t$o    { makeLexeme Goto }
+  $i$f        { makeLexeme If }
+  $e$l$s$e    { makeLexeme Else }
+  $f$o$r      { makeLexeme For }
+  $i$n        { makeLexeme In }
+  $d$o        { makeLexeme Do }
+  $s$e$t      { makeLexeme Set }
+  $s$e$t$l$o$l{ makeLexeme SetLocal }
+  '@'         { makeLexeme AtSign }
+  '&'         { makeLexeme AndSign }
+  '|'         { makeLexeme Pipe }
+  "&&"        { makeLexeme And }
+  "||"        { makeLexeme Or }
+  "("         { makeLexeme LParen }
+  ")"         { makeLexeme RParen }
+  @identifier { makeStringLexeme Identifier }
 
 {
+makeLexPos :: AlexPosn -> Int -> LexPos
+makeLexPos (AlexPn startByte line column) length =
+  LP {lpStartByte = startByte,
+      lpLength = length,
+      lpLine = line,
+      lpColumn = column}
+
+getMatchedString :: AlexInput -> Int -> String
+getMatchedString (_, _, _, str) len = take len str
+
+makeStringLexeme :: (String -> Token) -> AlexInput -> Int -> Alex Lexeme
+makeStringLexeme cons input len =
+  return $ Lex (makeLexPos pos len) token
+  where
+    (pos, _, _, _) = input
+    token = cons $ getMatchedString input len
+
+makeReadableLexeme :: (Read a) =>
+                      (a -> Token) -> AlexInput -> Int -> Alex Lexeme
+makeReadableLexeme cons input len =
+  return $ Lex (makeLexPos pos len) token
+  where
+    (pos, _, _, _) = input
+    token = cons $ read (getMatchedString input len)
+
+makeLexeme :: Token -> AlexInput -> Int -> Alex Lexeme
+makeLexeme token (pos, _, _, _) len = return $ Lex (makeLexPos pos len) token
 
 alexEOF :: Alex Lexeme
 alexEOF = return (Lex undefined LEOF)

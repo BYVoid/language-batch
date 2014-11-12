@@ -3,6 +3,25 @@ module Language.Batch.Token where
 data Token
   = Identifier String
   | String String
+  | Label String
+  | Rem String
+  | DoubleColon String
+  | Call
+  | Goto
+  | If
+  | Else
+  | For
+  | In
+  | Do
+  | Set
+  | SetLocal
+  | AtSign
+  | AndSign
+  | Pipe
+  | And
+  | Or
+  | LParen
+  | RParen
   | LEOF
   deriving (Eq, Read, Show)
 
