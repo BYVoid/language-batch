@@ -10,8 +10,8 @@ Synopsis:               Parser and beautifier of Windows Batch code.
 Build-Type:             Simple
 
 Source-Repository head
-  type: git
-  location: https://github.com/BYVoid/language-batch
+  type:                 git
+  location:             https://github.com/BYVoid/language-batch
 
 Library
   Hs-Source-Dirs:       library
