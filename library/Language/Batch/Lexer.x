@@ -52,29 +52,31 @@ $charesc = [abfnrtv\\\"\'\&]
 @gap     = \\ $whitechar+ \\
 @string_in  = . # [\"\\] | " " | @escape | @gap
 @string  = @string_in*
+@no_nl = .*
 
 tokens :-
-  $white+     { skip }
-  $r$e$m ' ' .* { makeStringLexeme $ \s -> Rem $ drop 4 s }
-  "::".*      { makeStringLexeme $ \s -> Rem $ drop 2 s }
-  ':'         { makeStringLexeme Label }
-  $c$a$l$l    { makeLexeme Call }
-  $g$o$t$o    { makeLexeme Goto }
-  $i$f        { makeLexeme If }
-  $e$l$s$e    { makeLexeme Else }
-  $f$o$r      { makeLexeme For }
-  $i$n        { makeLexeme In }
-  $d$o        { makeLexeme Do }
-  $s$e$t      { makeLexeme Set }
-  $s$e$t$l$o$l{ makeLexeme SetLocal }
-  '@'         { makeLexeme AtSign }
-  '&'         { makeLexeme AndSign }
-  '|'         { makeLexeme Pipe }
-  "&&"        { makeLexeme And }
-  "||"        { makeLexeme Or }
-  "("         { makeLexeme LParen }
-  ")"         { makeLexeme RParen }
-  @identifier { makeStringLexeme Identifier }
+  $white+           { skip }
+  $r$e$m" "@no_nl   { makeStringLexeme $ \s -> Rem $ drop 4 s }
+  "::"@no_nl        { makeStringLexeme $ \s -> DoubleColon $ drop 2 s }
+  "="@no_nl         { makeStringLexeme $ \s -> Assign $ drop 1 s }
+  ":"               { makeStringLexeme Label }
+  $c$a$l$l          { makeLexeme Call }
+  $g$o$t$o          { makeLexeme Goto }
+  $i$f              { makeLexeme If }
+  $e$l$s$e          { makeLexeme Else }
+  $f$o$r            { makeLexeme For }
+  $i$n              { makeLexeme In }
+  $d$o              { makeLexeme Do }
+  $s$e$t            { makeLexeme Set }
+  $s$e$t$l$o$l      { makeLexeme SetLocal }
+  "@"               { makeLexeme AtSign }
+  "&"               { makeLexeme AndSign }
+  "|"               { makeLexeme Pipe }
+  "&&"              { makeLexeme And }
+  "||"              { makeLexeme Or }
+  "("               { makeLexeme LParen }
+  ")"               { makeLexeme RParen }
+  @identifier       { makeStringLexeme Identifier }
 
 {
 makeLexPos :: AlexPosn -> Int -> LexPos

@@ -7,6 +7,7 @@ data Token
   | Label String
   | Rem String
   | DoubleColon String
+  | Assign String
   | Call
   | Goto
   | If

@@ -12,4 +12,4 @@ dist:
 clean:
 	cabal clean
 
-.PHONY: clean test
+.PHONY: batch-beautifier clean test

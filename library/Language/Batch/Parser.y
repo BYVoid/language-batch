@@ -82,8 +82,15 @@ exStr (Token.Lex _ (Token.Rem str)) = str
 exStr (Token.Lex _ (Token.DoubleColon str)) = str
 
 parseError :: [Token.Lexeme] -> a
-parseError _ = error "Parse error"
+parseError lexemes =
+  error $ "Parse error at " ++ (show line) ++ ":" ++ (show column)
+  where
+    lexeme = head lexemes
+    position = pos lexeme
+    line = Token.lpLine position
+    column = Token.lpColumn position
 
+parse :: String -> Program
 parse code = program $ Lexer.scanLexemes code
 
 }
