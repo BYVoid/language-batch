@@ -59,8 +59,8 @@ tokens :-
   $r$e$m" "@no_nl   { makeStringLexeme $ \s -> Rem $ drop 4 s }
   "::"@no_nl        { makeStringLexeme $ \s -> DoubleColon $ drop 2 s }
   "="@no_nl         { makeStringLexeme $ \s -> Assign $ drop 1 s }
-  ":"               { makeStringLexeme Label }
   $c$a$l$l          { makeLexeme Call }
+  ":"               { makeLexeme Label }
   $g$o$t$o          { makeLexeme Goto }
   $i$f              { makeLexeme If }
   $e$l$s$e          { makeLexeme Else }
@@ -76,6 +76,7 @@ tokens :-
   "||"              { makeLexeme Or }
   "("               { makeLexeme LParen }
   ")"               { makeLexeme RParen }
+  "/"               { makeLexeme Slash }
   @identifier       { makeStringLexeme Identifier }
 
 {

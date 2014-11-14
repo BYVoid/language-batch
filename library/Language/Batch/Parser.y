@@ -17,13 +17,14 @@ import Prelude hiding(span)
    ident        { Token.Lex _ (Token.Identifier _) }
    rem          { Token.Lex _ (Token.Rem _) }
    doublecolon  { Token.Lex _ (Token.DoubleColon _) }
-   label        { Token.Lex _ (Token.Label _) }
+   assign       { Token.Lex _ (Token.Assign _) }
+   label        { Token.Lex _ Token.Label }
    goto         { Token.Lex _ Token.Goto }
    set          { Token.Lex _ Token.Set }
 %%
 
 program
-  : statements { Program [] $ span (apos $ head $1) (apos $ last $1) }
+  : statements { Program $1 $ span (apos $ head $1) (apos $ last $1) }
 
 statement
   : rem {
@@ -32,11 +33,22 @@ statement
   | doublecolon {
     DoubleColonComment (exStr $1) (pos $1)
   }
-  | label {
-    Label (Identifier (exStr $1) (pos $1)) (pos $1)
+  | label identifier {
+    Label $2 $ span (pos $1) (apos $2)
   }
   | goto identifier {
     Goto $2 $ span (pos $1) (apos $2)
+  }
+  | set_statement {
+    Set $1 (apos $1)
+  }
+
+set_statement
+  : set identifier assign {
+    StrAssign $2 (parseAssign $3) $ span (pos $1) (pos $3)
+  }
+  | set identifier {
+    SetDisplay $2 $ span (pos $1) (apos $2)
   }
 
 identifier
@@ -78,8 +90,13 @@ exInt (Token.Lex _ (Token.Int num)) = num
 
 exStr :: Token.Lexeme -> String
 exStr (Token.Lex _ (Token.String str)) = str
+exStr (Token.Lex _ (Token.Identifier str)) = str
 exStr (Token.Lex _ (Token.Rem str)) = str
 exStr (Token.Lex _ (Token.DoubleColon str)) = str
+
+parseAssign :: Token.Lexeme -> [VarString]
+parseAssign (Token.Lex pos (Token.Assign str)) =
+  [String str pos] -- TODO parse embeded variables
 
 parseError :: [Token.Lexeme] -> a
 parseError lexemes =

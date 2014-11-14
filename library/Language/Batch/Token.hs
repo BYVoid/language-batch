@@ -4,11 +4,11 @@ data Token
   = Identifier String
   | String String
   | Int Int
-  | Label String
   | Rem String
   | DoubleColon String
   | Assign String
   | Call
+  | Label
   | Goto
   | If
   | Else
@@ -24,6 +24,7 @@ data Token
   | Or
   | LParen
   | RParen
+  | Slash
   | LEOF
   deriving (Eq, Read, Show)
 
