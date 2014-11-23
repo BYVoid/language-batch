@@ -22,6 +22,7 @@ Library
                         Language.Batch.Ast.Positioned,
                         Language.Batch.Lexer,
                         Language.Batch.Parser,
+                        Language.Batch.PrettyPrint,
                         Language.Batch.Token
 
 Executable batch-beautifier
