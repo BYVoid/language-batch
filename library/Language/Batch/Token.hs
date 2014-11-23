@@ -1,7 +1,7 @@
 module Language.Batch.Token where
 
 data Token
-  = Identifier String
+  = Param String
   | String String
   | Int Int
   | Rem String
@@ -24,7 +24,8 @@ data Token
   | Or
   | LParen
   | RParen
-  | Slash
+  | SlashA
+  | SlashP
   | LEOF
   deriving (Eq, Read, Show)
 

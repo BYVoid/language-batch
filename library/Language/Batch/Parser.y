@@ -14,13 +14,15 @@ import Prelude hiding(span)
 
 %token
    string       { Token.Lex _ (Token.String _) }
-   ident        { Token.Lex _ (Token.Identifier _) }
+   param        { Token.Lex _ (Token.Param _) }
    rem          { Token.Lex _ (Token.Rem _) }
    doublecolon  { Token.Lex _ (Token.DoubleColon _) }
    assign       { Token.Lex _ (Token.Assign _) }
    label        { Token.Lex _ Token.Label }
    goto         { Token.Lex _ Token.Goto }
    set          { Token.Lex _ Token.Set }
+   slash_a      { Token.Lex _ Token.SlashA }
+   slash_p      { Token.Lex _ Token.SlashP }
 %%
 
 program
@@ -33,10 +35,10 @@ statement
   | doublecolon {
     DoubleColonComment (exStr $1) (pos $1)
   }
-  | label identifier {
+  | label parameter {
     Label $2 $ span (pos $1) (apos $2)
   }
-  | goto identifier {
+  | goto parameter {
     Goto $2 $ span (pos $1) (apos $2)
   }
   | set_statement {
@@ -44,15 +46,18 @@ statement
   }
 
 set_statement
-  : set identifier assign {
+  : set parameter assign {
     StrAssign $2 (parseAssign $3) $ span (pos $1) (pos $3)
   }
-  | set identifier {
+  | set slash_p parameter assign {
+    PromptAssign $3 (parseAssign $4) $ span (pos $1) (pos $4)
+  }
+  | set parameter {
     SetDisplay $2 $ span (pos $1) (apos $2)
   }
 
-identifier
-  : ident {
+parameter
+  : param {
     Identifier (exStr $1) (pos $1)
   }
 
@@ -90,7 +95,7 @@ exInt (Token.Lex _ (Token.Int num)) = num
 
 exStr :: Token.Lexeme -> String
 exStr (Token.Lex _ (Token.String str)) = str
-exStr (Token.Lex _ (Token.Identifier str)) = str
+exStr (Token.Lex _ (Token.Param str)) = str
 exStr (Token.Lex _ (Token.Rem str)) = str
 exStr (Token.Lex _ (Token.DoubleColon str)) = str
 

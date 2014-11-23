@@ -6,6 +6,7 @@ import Language.Batch.Token
 %wrapper "monad"
 
 $underscore = \_
+$slash =      \/
 $whitechar =  [ \t\n\r\f\v]
 $newline =    [\r\n]
 $digit =      [0-9]
@@ -25,11 +26,12 @@ $l =          [lL]
 $m =          [mM]
 $n =          [nN]
 $o =          [oO]
+$p =          [pP]
 $r =          [rR]
 $s =          [sS]
 $t =          [tT]
 
-@identifier = [$alpha $underscore] [$alpha $digit $underscore]*
+@identifier = [$alpha $digit $underscore $slash]+
 
 -- Integers
 @decimal =    $digit+
@@ -76,8 +78,9 @@ tokens :-
   "||"              { makeLexeme Or }
   "("               { makeLexeme LParen }
   ")"               { makeLexeme RParen }
-  "/"               { makeLexeme Slash }
-  @identifier       { makeStringLexeme Identifier }
+  $slash $a         { makeLexeme SlashA }
+  $slash $p         { makeLexeme SlashP }
+  @identifier       { makeStringLexeme Param }
 
 {
 makeLexPos :: AlexPosn -> Int -> LexPos
