@@ -29,7 +29,7 @@ import Prelude hiding(span)
 %%
 
 program
-  : statements { Program $1 $ span (apos $ head $1) (apos $ last $1) }
+  : statements { Program $1 $ span (pos $ head $1) (pos $ last $1) }
 
 statement
   : rem {
@@ -39,13 +39,13 @@ statement
     DoubleColonComment (exStr $1) (pos $1)
   }
   | label parameter {
-    Label $2 $ span (pos $1) (apos $2)
+    Label $2 $ span (pos $1) (pos $2)
   }
   | goto parameter {
-    Goto $2 $ span (pos $1) (apos $2)
+    Goto $2 $ span (pos $1) (pos $2)
   }
   | set_statement {
-    Set $1 (apos $1)
+    Set $1 (pos $1)
   }
 
 set_statement
@@ -59,7 +59,7 @@ set_statement
     PromptAssign $3 (parseAssign $4) $ span (pos $1) (pos $4)
   }
   | set parameter {
-    SetDisplay $2 $ span (pos $1) (apos $2)
+    SetDisplay $2 $ span (pos $1) (pos $2)
   }
 
 parameter
@@ -79,13 +79,16 @@ expression
 {
 dummyPos = Token.LP 0 0 0 0
 
+class Posed a where
+  pos :: a -> Token.LexPos
+
 -- Get the position information of a Lexeme
-pos :: Token.Lexeme -> Token.LexPos
-pos (Token.Lex pos _) = pos
+instance Posed Token.Lexeme where
+  pos (Token.Lex pos _) = pos
 
 -- Get the position information of a AstNode
-apos :: Ast.AstNode a => a Token.LexPos -> Token.LexPos
-apos node = Ast.annot node
+instance Ast.AstNode a => Posed (a Token.LexPos) where
+  pos node = Ast.annot node
 
 -- Merge two positions from leftmost to rightmost
 span :: Token.LexPos -> Token.LexPos -> Token.LexPos
