@@ -80,6 +80,7 @@ tokens :-
   ")"               { makeLexeme RParen }
   $slash $a         { makeLexeme SlashA }
   $slash $p         { makeLexeme SlashP }
+  @decimal          { makeReadableLexeme Int }
   @identifier       { makeStringLexeme Param }
 
 {
