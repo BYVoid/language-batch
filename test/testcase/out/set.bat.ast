@@ -1,0 +1,87 @@
+Program
+  { program_stmts =
+      [ Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var1"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 5 , lpStartByte = 4 , lpLength = 4 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "Hello world"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 9 , lpStartByte = 8 , lpLength = 12 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 20 }
+                }
+          , stmt_annot =
+              LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 20 }
+          }
+      , Set
+          { stmt_set =
+              ArithAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var2"
+                      , ident_annot =
+                          LP { lpLine = 2 , lpColumn = 8 , lpStartByte = 28 , lpLength = 4 }
+                      }
+                , set_expr =
+                    Int
+                      { expr_int = 4
+                      , expr_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 1 }
+                      }
+                , set_annot =
+                    LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 21 , lpLength = 13 }
+                }
+          , stmt_annot =
+              LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 21 , lpLength = 13 }
+          }
+      , Set
+          { stmt_set =
+              PromptAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var3"
+                      , ident_annot =
+                          LP { lpLine = 3 , lpColumn = 8 , lpStartByte = 42 , lpLength = 4 }
+                      }
+                , set_prompt =
+                    [ String
+                        { varstr_str = "Please input"
+                        , varstr_annot =
+                            LP
+                              { lpLine = 3 , lpColumn = 12 , lpStartByte = 46 , lpLength = 13 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 3 , lpColumn = 1 , lpStartByte = 35 , lpLength = 24 }
+                }
+          , stmt_annot =
+              LP { lpLine = 3 , lpColumn = 1 , lpStartByte = 35 , lpLength = 24 }
+          }
+      , Set
+          { stmt_set =
+              SetDisplay
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var"
+                      , ident_annot =
+                          LP { lpLine = 4 , lpColumn = 5 , lpStartByte = 64 , lpLength = 3 }
+                      }
+                , set_annot =
+                    LP { lpLine = 4 , lpColumn = 1 , lpStartByte = 60 , lpLength = 7 }
+                }
+          , stmt_annot =
+              LP { lpLine = 4 , lpColumn = 1 , lpStartByte = 60 , lpLength = 7 }
+          }
+      ]
+  , program_annot =
+      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 67 }
+  }

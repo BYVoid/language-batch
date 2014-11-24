@@ -1,0 +1,41 @@
+[ Lex
+    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 3 }
+    Set
+, Lex
+    LP { lpLine = 1 , lpColumn = 5 , lpStartByte = 4 , lpLength = 4 }
+    (Param "var1")
+, Lex
+    LP { lpLine = 1 , lpColumn = 9 , lpStartByte = 8 , lpLength = 12 }
+    (Assign "Hello world")
+, Lex
+    LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 21 , lpLength = 3 }
+    Set
+, Lex
+    LP { lpLine = 2 , lpColumn = 5 , lpStartByte = 25 , lpLength = 2 }
+    SlashA
+, Lex
+    LP { lpLine = 2 , lpColumn = 8 , lpStartByte = 28 , lpLength = 4 }
+    (Param "var2")
+, Lex
+    LP { lpLine = 2 , lpColumn = 12 , lpStartByte = 32 , lpLength = 2 }
+    (Assign "4")
+, Lex
+    LP { lpLine = 3 , lpColumn = 1 , lpStartByte = 35 , lpLength = 3 }
+    Set
+, Lex
+    LP { lpLine = 3 , lpColumn = 5 , lpStartByte = 39 , lpLength = 2 }
+    SlashP
+, Lex
+    LP { lpLine = 3 , lpColumn = 8 , lpStartByte = 42 , lpLength = 4 }
+    (Param "var3")
+, Lex
+    LP
+      { lpLine = 3 , lpColumn = 12 , lpStartByte = 46 , lpLength = 13 }
+    (Assign "Please input")
+, Lex
+    LP { lpLine = 4 , lpColumn = 1 , lpStartByte = 60 , lpLength = 3 }
+    Set
+, Lex
+    LP { lpLine = 4 , lpColumn = 5 , lpStartByte = 64 , lpLength = 3 }
+    (Param "var")
+]

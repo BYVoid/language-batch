@@ -3,7 +3,6 @@ batch-beautifier: dist
 	ln -sf dist/build/batch-beautifier/batch-beautifier batch-beautifier
 
 test: dist
-	cabal build
 	cabal test
 
 dist:
