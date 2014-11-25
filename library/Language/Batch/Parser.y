@@ -26,6 +26,7 @@ import Prelude hiding(span)
    set          { Token.Lex _ Token.Set }
    slash_a      { Token.Lex _ Token.SlashA }
    slash_p      { Token.Lex _ Token.SlashP }
+   doublequote  { Token.Lex _ Token.DoubleQuote }
 %%
 
 program
@@ -60,6 +61,9 @@ set_statement
   }
   | set parameter {
     SetDisplay $2 $ span (pos $1) (pos $2)
+  }
+  | set doublequote {
+    SetDisplay (Identifier "\"" (pos $2)) $ span (pos $1) (pos $2)
   }
 
 parameter

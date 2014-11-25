@@ -7,6 +7,7 @@ import Language.Batch.Token
 
 $underscore = \_
 $slash =      \/
+$doublequote =\"
 $whitechar =  [ \t\n\r\f\v]
 $newline =    [\r\n]
 $digit =      [0-9]
@@ -80,6 +81,7 @@ tokens :-
   ")"               { makeLexeme RParen }
   $slash $a         { makeLexeme SlashA }
   $slash $p         { makeLexeme SlashP }
+  $doublequote      { makeLexeme DoubleQuote }
   @decimal          { makeReadableLexeme Int }
   @identifier       { makeStringLexeme Param }
 

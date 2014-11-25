@@ -26,6 +26,7 @@ data Token
   | RParen
   | SlashA
   | SlashP
+  | DoubleQuote
   | LEOF
   deriving (Eq, Read, Show)
 
