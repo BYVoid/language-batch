@@ -8,7 +8,7 @@ import Language.Batch.Token
 $underscore = \_
 $slash =      \/
 $doublequote =\"
-$whitechar =  [ \t\n\r\f\v]
+$whitechar =  [ \t\f\v]
 $newline =    [\r\n]
 $digit =      [0-9]
 $oct_digit =  [0-7]
@@ -32,7 +32,7 @@ $r =          [rR]
 $s =          [sS]
 $t =          [tT]
 
-@identifier = [$alpha $digit $underscore $slash]+
+@param = [$alpha $digit $underscore $slash]+
 
 -- Integers
 @decimal =    $digit+
@@ -58,11 +58,11 @@ $charesc = [abfnrtv\\\"\'\&]
 @no_nl = .*
 
 tokens :-
-  $white+           { skip }
+  $newline+         { skip }
+  $white+           { makeStringLexeme White }
   $r$e$m" "@no_nl   { makeStringLexeme $ \s -> Rem $ drop 4 s }
   "::"@no_nl        { makeStringLexeme $ \s -> DoubleColon $ drop 2 s }
-  "="@no_nl         { makeStringLexeme $ \s -> Assign $ drop 1 s }
-  $s$e$t" "@no_nl   { makeStringLexeme $ \s -> Set $ drop 4 s }
+  $s$e$t$white+@no_nl   { makeStringLexeme $ \s -> Set $ drop 4 s }
   $c$a$l$l          { makeLexeme Call }
   ":"               { makeLexeme Label }
   $g$o$t$o          { makeLexeme Goto }
@@ -72,6 +72,7 @@ tokens :-
   $i$n              { makeLexeme In }
   $d$o              { makeLexeme Do }
   $s$e$t$l$o$l      { makeLexeme SetLocal }
+  "="               { makeLexeme Assign }
   "@"               { makeLexeme AtSign }
   "&"               { makeLexeme AndSign }
   "|"               { makeLexeme Pipe }
@@ -83,7 +84,7 @@ tokens :-
   $slash $p         { makeLexeme SlashP }
   $doublequote      { makeLexeme DoubleQuote }
   @decimal          { makeReadableLexeme Int }
-  @identifier       { makeStringLexeme Param }
+  @param            { makeStringLexeme Param }
 
 {
 makeLexPos :: AlexPosn -> Int -> LexPos

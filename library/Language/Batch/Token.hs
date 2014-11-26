@@ -1,12 +1,12 @@
 module Language.Batch.Token where
 
 data Token
-  = Param String
+  = White String
+  | Param String
   | String String
   | Int Int
   | Rem String
   | DoubleColon String
-  | Assign String
   | Set String
   | Call
   | Label
@@ -17,6 +17,7 @@ data Token
   | In
   | Do
   | SetLocal
+  | Assign
   | AtSign
   | AndSign
   | Pipe

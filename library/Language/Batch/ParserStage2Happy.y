@@ -6,6 +6,8 @@ import qualified Language.Batch.Lexer as Lexer
 import Language.Batch.ParserUtils
 import qualified Language.Batch.Token as Token
 import Prelude hiding(span)
+
+import Debug.Trace
 }
 
 --          parse function    terminal name
@@ -18,34 +20,55 @@ import Prelude hiding(span)
 %token
    int          { Token.Lex _ (Token.Int _) }
    param        { Token.Lex _ (Token.Param _) }
-   assign       { Token.Lex _ (Token.Assign _) }
-   "\""         { Token.Lex _ Token.DoubleQuote }
+   white        { Token.Lex _ (Token.White _) }
+   "="          { Token.Lex _ Token.Assign }
+   '"'         { Token.Lex _ Token.DoubleQuote }
    "/a"         { Token.Lex _ Token.SlashA }
    "/p"         { Token.Lex _ Token.SlashP }
+
+%nonassoc '"'
+
 %%
 
 setClause
   : setClauseNoSlash { $1 }
 
 setClauseNoSlash
-  : setClauseNoSlashInternal { $1 }
-  | "\"" setClauseNoSlashInternal { $2 }
-
-setClauseNoSlashInternal
   : parameter {
     Ast.SetDisplay $1 (pos $1)
   }
-  | "\"" {
+  | '"' {
     Ast.SetDisplay (Ast.Identifier "\"" (pos $1)) (pos $1)
   }
-  | parameter assign {
-    Ast.StrAssign $1 (parseAssign $ exStr $2) $ span (pos $1) (pos $2)
+  | parameter "=" varstrings {
+    Ast.StrAssign $1 (escape $3) $ span (pos $1) (pos $3)
+  }
+  | '"' parameter "=" varstrings  {
+    Ast.StrAssign $2 (dropLastQuote $4) $ span (pos $1) (pos $4)
   }
 
 parameter
   : param {
     Ast.Identifier (exStr $1) (pos $1)
   }
+
+varstring
+  : param {
+    Ast.String (exStr $1) (pos $1)
+  }
+  | int {
+    Ast.String (show $ exInt $1) (pos $1)
+  }
+  | white {
+    Ast.String (exStr $1) (pos $1)
+  }
+  | '"' {
+    Ast.String "\"" (pos $1)
+  }
+
+varstrings
+  : { [] }
+  | varstring varstrings { $1 : $2 }
 
 expression
   : int {
@@ -57,9 +80,6 @@ parseExpression :: String -> Ast.Expression
 parseExpression code = expression $ Lexer.scanLexemes code
 
 parseSetClause :: String -> Ast.SetClause
-parseSetClause = setClause . Lexer.scanLexemes
-
-parseAssign :: String -> [Ast.VarString]
-parseAssign code =
-  [Ast.String code dummyPos] -- TODO parse embeded variables
+parseSetClause code = setClause tokens
+  where tokens = Lexer.scanLexemes code
 }
