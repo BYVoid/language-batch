@@ -1,7 +1,6 @@
 {
-module Language.Batch.Parser(parse) where
+module Language.Batch.ParserStage1(parse) where
 
-import qualified Language.Batch.Ast.Positioned as Ast
 import qualified Language.Batch.Lexer as Lexer
 import Language.Batch.ParserUtils
 import qualified Language.Batch.Token as Token
@@ -11,13 +10,11 @@ import Prelude hiding(span)
 
 --          parse function    terminal name
 %name       program           program
-%name       expression        expression
 
 %tokentype  { Token.Lexeme }
 %error      { parseError }
 
 %token
-   int          { Token.Lex _ (Token.Int _) }
    string       { Token.Lex _ (Token.String _) }
    param        { Token.Lex _ (Token.Param _) }
    rem          { Token.Lex _ (Token.Rem _) }
@@ -60,11 +57,6 @@ statements
 labelname
   : param {
     ST.LabelName (exStr $1) (pos $1)
-  }
-
-expression
-  : int {
-    Ast.Int (exInt $1) (pos $1)
   }
 
 {

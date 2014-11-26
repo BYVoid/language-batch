@@ -21,11 +21,12 @@ Library
                         Language.Batch.Ast,
                         Language.Batch.Ast.Positioned,
                         Language.Batch.Lexer,
-                        Language.Batch.Parser,
                         Language.Batch.PrettyPrint,
                         Language.Batch.SyntaxTree,
                         Language.Batch.Token
-  Other-Modules:        Language.Batch.ParserUtils
+  Other-Modules:        Language.Batch.ParserStage1,
+                        Language.Batch.ParserStage2,
+                        Language.Batch.ParserUtils
 
 Executable batch-beautifier
   Main-Is:              Main.hs
