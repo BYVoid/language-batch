@@ -59,7 +59,7 @@ instance Renderable (PSetClause a) where
 
 instance Renderable (PVarString a) where
   render varstr = case varstr of
-    Variable var _ -> render var
+    Variable var _ -> build '%' var '%'
     String str _ -> render str
 
 instance Renderable [PVarString a] where
@@ -69,7 +69,7 @@ instance Renderable [PVarString a] where
 instance Renderable (PExpression a) where
   render expr = case expr of
     Int num _ -> render num
-    ExprVar var _ -> render var
+    ExprVar var _ -> build '%' var '%'
 
 instance Renderable (PIdentifier a) where
   render (Identifier ident _) = render ident

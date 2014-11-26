@@ -113,14 +113,26 @@ Program
       , Set
           { stmt_set =
               Unparsed
-                { unparsed_string = "var"
+                { unparsed_string = "var12= Con%var1% cat %var2%"
                 , unparsed_pos =
                     LP
-                      { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 7 }
+                      { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 31 }
                 }
           , stmt_pos =
               LP
-                { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 7 }
+                { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 31 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "var"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 13 , lpColumn = 1 , lpStartByte = 243 , lpLength = 7 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 13 , lpColumn = 1 , lpStartByte = 243 , lpLength = 7 }
           }
       , Set
           { stmt_set =
@@ -128,11 +140,11 @@ Program
                 { unparsed_string = "\"var1\""
                 , unparsed_pos =
                     LP
-                      { lpLine = 13 , lpColumn = 1 , lpStartByte = 219 , lpLength = 10 }
+                      { lpLine = 14 , lpColumn = 1 , lpStartByte = 251 , lpLength = 10 }
                 }
           , stmt_pos =
               LP
-                { lpLine = 13 , lpColumn = 1 , lpStartByte = 219 , lpLength = 10 }
+                { lpLine = 14 , lpColumn = 1 , lpStartByte = 251 , lpLength = 10 }
           }
       , Set
           { stmt_set =
@@ -140,13 +152,13 @@ Program
                 { unparsed_string = "\""
                 , unparsed_pos =
                     LP
-                      { lpLine = 14 , lpColumn = 1 , lpStartByte = 230 , lpLength = 5 }
+                      { lpLine = 15 , lpColumn = 1 , lpStartByte = 262 , lpLength = 5 }
                 }
           , stmt_pos =
               LP
-                { lpLine = 14 , lpColumn = 1 , lpStartByte = 230 , lpLength = 5 }
+                { lpLine = 15 , lpColumn = 1 , lpStartByte = 262 , lpLength = 5 }
           }
       ]
   , program_pos =
-      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 235 }
+      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 267 }
   }

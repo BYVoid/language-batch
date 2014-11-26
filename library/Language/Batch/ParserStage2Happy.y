@@ -20,6 +20,7 @@ import Debug.Trace
 %token
    int          { Token.Lex _ (Token.Int _) }
    param        { Token.Lex _ (Token.Param _) }
+   percent_var  { Token.Lex _ (Token.PercentVar _) }
    white        { Token.Lex _ (Token.White _) }
    "="          { Token.Lex _ Token.Assign }
    '"'          { Token.Lex _ Token.DoubleQuote }
@@ -80,10 +81,18 @@ varstring
   | '"' {
     Ast.String "\"" (pos $1)
   }
+  | var {
+    Ast.Variable $1 (pos $1)
+  }
 
 varstrings
   : { [] }
   | varstring varstrings { $1 : $2 }
+
+var
+  : percent_var {
+    Ast.Identifier (exStr $1) (pos $1)
+  } 
 
 expression
   : int {

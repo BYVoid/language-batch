@@ -48,6 +48,7 @@ exStr (Token.Lex _ (Token.Param str)) = str
 exStr (Token.Lex _ (Token.Rem str)) = str
 exStr (Token.Lex _ (Token.DoubleColon str)) = str
 exStr (Token.Lex _ (Token.Set str)) = str
+exStr (Token.Lex _ (Token.PercentVar str)) = str
 
 unparsed :: Token.Lexeme -> ST.Unparsed
 unparsed lexeme = ST.Unparsed (exStr lexeme) (pos lexeme)

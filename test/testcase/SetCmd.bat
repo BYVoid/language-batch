@@ -9,6 +9,7 @@ set "var6=
 set /a  var9=4
 set /A "var10=6"
 set /p	var11=Please input
+set var12= Con%var1% cat %var2%
 set var
 set "var1"
 set "

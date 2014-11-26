@@ -5,6 +5,7 @@ data Token
   | Param String
   | String String
   | Int Int
+  | PercentVar String
   | Rem String
   | DoubleColon String
   | Set String

@@ -32,6 +32,7 @@ $r =          [rR]
 $s =          [sS]
 $t =          [tT]
 
+@var = [$alpha $digit $underscore]+
 @param = [$alpha $digit $underscore $slash]+
 
 -- Integers
@@ -83,6 +84,7 @@ tokens :-
   $slash $a         { makeLexeme SlashA }
   $slash $p         { makeLexeme SlashP }
   $doublequote      { makeLexeme DoubleQuote }
+  "%"@var"%"        { makeStringLexeme $ \s -> PercentVar $ tail $ init s}
   @decimal          { makeReadableLexeme Int }
   @param            { makeStringLexeme Param }
 

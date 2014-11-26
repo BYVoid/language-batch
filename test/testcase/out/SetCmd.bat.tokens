@@ -39,14 +39,18 @@
     (Set "/p\tvar11=Please input")
 , Lex
     LP
-      { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 7 }
+      { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 31 }
+    (Set "var12= Con%var1% cat %var2%")
+, Lex
+    LP
+      { lpLine = 13 , lpColumn = 1 , lpStartByte = 243 , lpLength = 7 }
     (Set "var")
 , Lex
     LP
-      { lpLine = 13 , lpColumn = 1 , lpStartByte = 219 , lpLength = 10 }
+      { lpLine = 14 , lpColumn = 1 , lpStartByte = 251 , lpLength = 10 }
     (Set "\"var1\"")
 , Lex
     LP
-      { lpLine = 14 , lpColumn = 1 , lpStartByte = 230 , lpLength = 5 }
+      { lpLine = 15 , lpColumn = 1 , lpStartByte = 262 , lpLength = 5 }
     (Set "\"")
 ]
