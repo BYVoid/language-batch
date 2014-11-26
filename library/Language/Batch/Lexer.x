@@ -62,6 +62,7 @@ tokens :-
   $r$e$m" "@no_nl   { makeStringLexeme $ \s -> Rem $ drop 4 s }
   "::"@no_nl        { makeStringLexeme $ \s -> DoubleColon $ drop 2 s }
   "="@no_nl         { makeStringLexeme $ \s -> Assign $ drop 1 s }
+  $s$e$t" "@no_nl   { makeStringLexeme $ \s -> Set $ drop 4 s }
   $c$a$l$l          { makeLexeme Call }
   ":"               { makeLexeme Label }
   $g$o$t$o          { makeLexeme Goto }
@@ -70,7 +71,6 @@ tokens :-
   $f$o$r            { makeLexeme For }
   $i$n              { makeLexeme In }
   $d$o              { makeLexeme Do }
-  $s$e$t            { makeLexeme Set }
   $s$e$t$l$o$l      { makeLexeme SetLocal }
   "@"               { makeLexeme AtSign }
   "&"               { makeLexeme AndSign }

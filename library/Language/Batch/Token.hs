@@ -7,6 +7,7 @@ data Token
   | Rem String
   | DoubleColon String
   | Assign String
+  | Set String
   | Call
   | Label
   | Goto
@@ -15,7 +16,6 @@ data Token
   | For
   | In
   | Do
-  | Set
   | SetLocal
   | AtSign
   | AndSign

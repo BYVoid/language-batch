@@ -3,6 +3,7 @@ import Data.Monoid
 import qualified Language.Batch as Batch
 import qualified Language.Batch.Ast.Positioned as Ast
 import qualified Language.Batch.Token as Token
+import qualified Language.Batch.SyntaxTree as SyntaxTree
 import qualified Language.Batch.PrettyPrint as PrettyPrint
 import Test.Framework
 import Test.Framework.Providers.HUnit
@@ -10,13 +11,14 @@ import Test.HUnit
 
 main :: IO ()
 main = defaultMainWithOpts
-  [testCase "Lexer"       testLexer,
-   testCase "Parser"      testParser,
-   testCase "PrettyPrint" testPrettyPrint]
+  [testCase "Lexer"         testLexer,
+   testCase "ParserStage1"  testParser1,
+   testCase "ParserStage2"  testParser2,
+   testCase "PrettyPrint"   testPrettyPrint]
   mempty
 
 testCaseDir = "test/testcase"
-testCases = ["set"]
+testCases = ["SetCmd"]
 
 testLexer :: Assertion
 testLexer = do
@@ -30,8 +32,20 @@ testLexer = do
     testLexerFile (testCaseDir ++ "/" ++ testcase ++ ".bat")
                   (testCaseDir ++ "/out/" ++ testcase ++ ".bat.tokens")
 
-testParser :: Assertion
-testParser = do
+testParser1 :: Assertion
+testParser1 = do
+  let testParserFile codeFile astFile = do
+      astStr <- readFile astFile
+      code <- readFile codeFile
+      let expected = read astStr :: SyntaxTree.Program
+      let st = Batch.parseStage1 code
+      assertEqual (show st) expected st
+  forM_ testCases $ \testcase ->
+    testParserFile (testCaseDir ++ "/" ++ testcase ++ ".bat")
+                   (testCaseDir ++ "/out/" ++ testcase ++ ".bat.st")
+
+testParser2 :: Assertion
+testParser2 = do
   let testParserFile codeFile astFile = do
       astStr <- readFile astFile
       code <- readFile codeFile

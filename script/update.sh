@@ -6,5 +6,5 @@ for filename in ${inputDir}/*.bat; do
   echo $caseName
   input=${inputDir}/${caseName}.bat
   output=${inputDir}/out/${caseName}.bat
-  $bin $input $output --ast --tokens
+  $bin $input $output --st --ast --tokens
 done

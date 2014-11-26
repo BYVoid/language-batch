@@ -23,6 +23,7 @@ Library
                         Language.Batch.Lexer,
                         Language.Batch.Parser,
                         Language.Batch.PrettyPrint,
+                        Language.Batch.SyntaxTree,
                         Language.Batch.Token
 
 Executable batch-beautifier
