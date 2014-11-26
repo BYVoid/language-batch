@@ -4,27 +4,4 @@
 , Lex
     LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 21 , lpLength = 24 }
     (Set "var2=\"Hello world 2\"")
-, Lex
-    LP { lpLine = 3 , lpColumn = 1 , lpStartByte = 46 , lpLength = 24 }
-    (Set "\"var3=Hello world 3\"")
-, Lex
-    LP { lpLine = 4 , lpColumn = 1 , lpStartByte = 71 , lpLength = 26 }
-    (Set "\"var4=\"Hello world 4\"\"")
-, Lex
-    LP { lpLine = 5 , lpColumn = 1 , lpStartByte = 98 , lpLength = 13 }
-    (Set "/a var5=4")
-, Lex
-    LP
-      { lpLine = 6 , lpColumn = 1 , lpStartByte = 112 , lpLength = 15 }
-    (Set "/A \"var6=6\"")
-, Lex
-    LP
-      { lpLine = 7 , lpColumn = 1 , lpStartByte = 128 , lpLength = 24 }
-    (Set "/p var7=Please input")
-, Lex
-    LP { lpLine = 8 , lpColumn = 1 , lpStartByte = 153 , lpLength = 9 }
-    (Set "\"var\"")
-, Lex
-    LP { lpLine = 9 , lpColumn = 1 , lpStartByte = 163 , lpLength = 5 }
-    (Set "\"")
 ]

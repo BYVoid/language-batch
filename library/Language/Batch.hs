@@ -15,7 +15,7 @@ parseStage1 :: String -> SyntaxTree.Program
 parseStage1 code = ParserStage1.parse code
 
 parseStage2 :: SyntaxTree.Program -> Ast.Program
-parseStage2 st = Ast.empty -- TODO
+parseStage2 st = ParserStage2.parse st
 
 parse :: String -> Ast.Program
 parse code = parseStage2 $ parseStage1 code

@@ -26,6 +26,7 @@ Library
                         Language.Batch.Token
   Other-Modules:        Language.Batch.ParserStage1,
                         Language.Batch.ParserStage2,
+                        Language.Batch.ParserStage2Happy,
                         Language.Batch.ParserUtils
 
 Executable batch-beautifier

@@ -1,5 +1,50 @@
 Program
-  { program_stmts = []
+  { program_stmts =
+      [ Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var1"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 4 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "Hello world"
+                        , varstr_annot =
+                            LP { lpLine = 0 , lpColumn = 0 , lpStartByte = 0 , lpLength = 0 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 16 }
+                }
+          , stmt_annot =
+              LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 20 }
+          }
+      , Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var2"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 4 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "\"Hello world 2\""
+                        , varstr_annot =
+                            LP { lpLine = 0 , lpColumn = 0 , lpStartByte = 0 , lpLength = 0 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 20 }
+                }
+          , stmt_annot =
+              LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 21 , lpLength = 24 }
+          }
+      ]
   , program_annot =
-      LP { lpLine = 0 , lpColumn = 0 , lpStartByte = 0 , lpLength = 0 }
+      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 45 }
   }

@@ -36,6 +36,7 @@ exInt :: Token.Lexeme -> Int
 exInt (Token.Lex _ (Token.Int num)) = num
 
 exStr :: Token.Lexeme -> String
+exStr (Token.Lex _ (Token.Assign str)) = str
 exStr (Token.Lex _ (Token.String str)) = str
 exStr (Token.Lex _ (Token.Param str)) = str
 exStr (Token.Lex _ (Token.Rem str)) = str

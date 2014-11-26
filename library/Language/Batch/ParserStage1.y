@@ -19,13 +19,9 @@ import Prelude hiding(span)
    param        { Token.Lex _ (Token.Param _) }
    rem          { Token.Lex _ (Token.Rem _) }
    doublecolon  { Token.Lex _ (Token.DoubleColon _) }
-   assign       { Token.Lex _ (Token.Assign _) }
    set          { Token.Lex _ (Token.Set _) }
    label        { Token.Lex _ Token.Label }
    goto         { Token.Lex _ Token.Goto }
-   slash_a      { Token.Lex _ Token.SlashA }
-   slash_p      { Token.Lex _ Token.SlashP }
-   doublequote  { Token.Lex _ Token.DoubleQuote }
 %%
 
 program
