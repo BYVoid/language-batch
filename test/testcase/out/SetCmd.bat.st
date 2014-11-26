@@ -74,35 +74,77 @@ Program
               LP
                 { lpLine = 8 , lpColumn = 1 , lpStartByte = 137 , lpLength = 15 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set /a var9=4"
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "/a  var9=4"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 14 }
+                }
           , stmt_pos =
               LP
-                { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 15 }
+                { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 14 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set /A \"var10=6\""
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "/A \"var10=6\""
+                , unparsed_pos =
+                    LP
+                      { lpLine = 10 , lpColumn = 1 , lpStartByte = 168 , lpLength = 16 }
+                }
           , stmt_pos =
               LP
-                { lpLine = 10 , lpColumn = 1 , lpStartByte = 169 , lpLength = 18 }
+                { lpLine = 10 , lpColumn = 1 , lpStartByte = 168 , lpLength = 16 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set /p var11=Please input"
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "/p\tvar11=Please input"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 11 , lpColumn = 1 , lpStartByte = 185 , lpLength = 25 }
+                }
           , stmt_pos =
               LP
-                { lpLine = 11 , lpColumn = 1 , lpStartByte = 188 , lpLength = 27 }
+                { lpLine = 11 , lpColumn = 1 , lpStartByte = 185 , lpLength = 25 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set \"var\""
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "var"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 7 }
+                }
           , stmt_pos =
               LP
-                { lpLine = 12 , lpColumn = 1 , lpStartByte = 216 , lpLength = 11 }
+                { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 7 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set \""
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "\"var1\""
+                , unparsed_pos =
+                    LP
+                      { lpLine = 13 , lpColumn = 1 , lpStartByte = 219 , lpLength = 10 }
+                }
           , stmt_pos =
               LP
-                { lpLine = 13 , lpColumn = 1 , lpStartByte = 228 , lpLength = 7 }
+                { lpLine = 13 , lpColumn = 1 , lpStartByte = 219 , lpLength = 10 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "\""
+                , unparsed_pos =
+                    LP
+                      { lpLine = 14 , lpColumn = 1 , lpStartByte = 230 , lpLength = 5 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 14 , lpColumn = 1 , lpStartByte = 230 , lpLength = 5 }
           }
       ]
   , program_pos =

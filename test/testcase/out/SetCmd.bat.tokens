@@ -27,22 +27,26 @@
     (DoubleColon "set \"var8=^(\"")
 , Lex
     LP
-      { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 15 }
-    (DoubleColon "set /a var9=4")
+      { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 14 }
+    (Set "/a  var9=4")
 , Lex
     LP
-      { lpLine = 10 , lpColumn = 1 , lpStartByte = 169 , lpLength = 18 }
-    (DoubleColon "set /A \"var10=6\"")
+      { lpLine = 10 , lpColumn = 1 , lpStartByte = 168 , lpLength = 16 }
+    (Set "/A \"var10=6\"")
 , Lex
     LP
-      { lpLine = 11 , lpColumn = 1 , lpStartByte = 188 , lpLength = 27 }
-    (DoubleColon "set /p var11=Please input")
+      { lpLine = 11 , lpColumn = 1 , lpStartByte = 185 , lpLength = 25 }
+    (Set "/p\tvar11=Please input")
 , Lex
     LP
-      { lpLine = 12 , lpColumn = 1 , lpStartByte = 216 , lpLength = 11 }
-    (DoubleColon "set \"var\"")
+      { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 7 }
+    (Set "var")
 , Lex
     LP
-      { lpLine = 13 , lpColumn = 1 , lpStartByte = 228 , lpLength = 7 }
-    (DoubleColon "set \"")
+      { lpLine = 13 , lpColumn = 1 , lpStartByte = 219 , lpLength = 10 }
+    (Set "\"var1\"")
+, Lex
+    LP
+      { lpLine = 14 , lpColumn = 1 , lpStartByte = 230 , lpLength = 5 }
+    (Set "\"")
 ]

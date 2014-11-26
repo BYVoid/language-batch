@@ -22,7 +22,7 @@ import Debug.Trace
    param        { Token.Lex _ (Token.Param _) }
    white        { Token.Lex _ (Token.White _) }
    "="          { Token.Lex _ Token.Assign }
-   '"'         { Token.Lex _ Token.DoubleQuote }
+   '"'          { Token.Lex _ Token.DoubleQuote }
    "/a"         { Token.Lex _ Token.SlashA }
    "/p"         { Token.Lex _ Token.SlashP }
 
@@ -32,10 +32,25 @@ import Debug.Trace
 
 setClause
   : setClauseNoSlash { $1 }
+  | "/a" white parameter "=" expression {
+    Ast.ArithAssign $3 $5 $ span (pos $1) (pos $5)
+  }
+  | "/a" white '"' parameter "=" expression '"' {
+    Ast.ArithAssign $4 $6 $ span (pos $1) (pos $7)
+  }
+  | "/p" white parameter "=" varstrings {
+    Ast.PromptAssign $3 (escape $5) $ span (pos $1) (pos $5)
+  }
+  | "/p" white '"' parameter "=" varstrings  {
+    Ast.PromptAssign $4 (dropLastQuote $6) $ span (pos $1) (pos $6)
+  }
 
 setClauseNoSlash
   : parameter {
     Ast.SetDisplay $1 (pos $1)
+  }
+  | '"' parameter '"' {
+    Ast.SetDisplay $2 $ span (pos $1) (pos $3)
   }
   | '"' {
     Ast.SetDisplay (Ast.Identifier "\"" (pos $1)) (pos $1)

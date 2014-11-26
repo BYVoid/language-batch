@@ -6,8 +6,9 @@ set "var5=wtf
 set "var6=
 ::set var7=^(
 ::set "var8=^("
-::set /a var9=4
-::set /A "var10=6"
-::set /p var11=Please input
-::set "var"
-::set "
+set /a  var9=4
+set /A "var10=6"
+set /p	var11=Please input
+set var
+set "var1"
+set "

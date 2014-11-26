@@ -229,35 +229,130 @@ Program
               LP
                 { lpLine = 8 , lpColumn = 1 , lpStartByte = 137 , lpLength = 15 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set /a var9=4"
+      , Set
+          { stmt_set =
+              ArithAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var9"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 5 , lpStartByte = 4 , lpLength = 4 }
+                      }
+                , set_expr =
+                    Int
+                      { expr_int = 4
+                      , expr_annot =
+                          LP { lpLine = 1 , lpColumn = 10 , lpStartByte = 9 , lpLength = 1 }
+                      }
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 10 }
+                }
           , stmt_annot =
               LP
-                { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 15 }
+                { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 14 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set /A \"var10=6\""
+      , Set
+          { stmt_set =
+              ArithAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var10"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 5 , lpStartByte = 4 , lpLength = 5 }
+                      }
+                , set_expr =
+                    Int
+                      { expr_int = 6
+                      , expr_annot =
+                          LP { lpLine = 1 , lpColumn = 11 , lpStartByte = 10 , lpLength = 1 }
+                      }
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 12 }
+                }
           , stmt_annot =
               LP
-                { lpLine = 10 , lpColumn = 1 , lpStartByte = 169 , lpLength = 18 }
+                { lpLine = 10 , lpColumn = 1 , lpStartByte = 168 , lpLength = 16 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set /p var11=Please input"
+      , Set
+          { stmt_set =
+              PromptAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var11"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 9 , lpStartByte = 3 , lpLength = 5 }
+                      }
+                , set_prompt =
+                    [ String
+                        { varstr_str = "Please"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 15 , lpStartByte = 9 , lpLength = 6 }
+                        }
+                    , String
+                        { varstr_str = " "
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 21 , lpStartByte = 15 , lpLength = 1 }
+                        }
+                    , String
+                        { varstr_str = "input"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 22 , lpStartByte = 16 , lpLength = 5 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 21 }
+                }
           , stmt_annot =
               LP
-                { lpLine = 11 , lpColumn = 1 , lpStartByte = 188 , lpLength = 27 }
+                { lpLine = 11 , lpColumn = 1 , lpStartByte = 185 , lpLength = 25 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set \"var\""
+      , Set
+          { stmt_set =
+              SetDisplay
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 3 }
+                      }
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 3 }
+                }
           , stmt_annot =
               LP
-                { lpLine = 12 , lpColumn = 1 , lpStartByte = 216 , lpLength = 11 }
+                { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 7 }
           }
-      , DoubleColonComment
-          { stmt_comment = "set \""
+      , Set
+          { stmt_set =
+              SetDisplay
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var1"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 2 , lpStartByte = 1 , lpLength = 4 }
+                      }
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 6 }
+                }
           , stmt_annot =
               LP
-                { lpLine = 13 , lpColumn = 1 , lpStartByte = 228 , lpLength = 7 }
+                { lpLine = 13 , lpColumn = 1 , lpStartByte = 219 , lpLength = 10 }
+          }
+      , Set
+          { stmt_set =
+              SetDisplay
+                { set_ident =
+                    Identifier
+                      { ident_ident = "\""
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 1 }
+                      }
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 1 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 14 , lpColumn = 1 , lpStartByte = 230 , lpLength = 5 }
           }
       ]
   , program_annot =
