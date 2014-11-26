@@ -25,6 +25,7 @@ Library
                         Language.Batch.PrettyPrint,
                         Language.Batch.SyntaxTree,
                         Language.Batch.Token
+  Other-Modules:        Language.Batch.ParserUtils
 
 Executable batch-beautifier
   Main-Is:              Main.hs
