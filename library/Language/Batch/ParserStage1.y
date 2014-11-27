@@ -12,7 +12,8 @@ import Prelude hiding(span)
 %name       program           program
 
 %tokentype  { Token.Lexeme }
-%error      { parseError }
+%monad      { ParseResult } { thenP } { returnP }
+%error      { parseErrorP }
 
 %token
    string       { Token.Lex _ (Token.String _) }
@@ -57,5 +58,8 @@ labelname
 
 {
 parse :: String -> ST.Program
-parse code = program $ Lexer.scanLexemes code
+parse code = case program tokens of
+  ParseOk result -> result
+  ParseFail pos -> displayError pos
+  where tokens = Lexer.scanLexemes code
 }

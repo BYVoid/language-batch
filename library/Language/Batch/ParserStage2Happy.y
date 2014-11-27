@@ -2,12 +2,10 @@
 module Language.Batch.ParserStage2Happy where
 
 import qualified Language.Batch.Ast.Positioned as Ast
-import qualified Language.Batch.Lexer as Lexer
 import Language.Batch.ParserUtils
 import qualified Language.Batch.Token as Token
 import Prelude hiding(span)
 
-import Debug.Trace
 }
 
 --          parse function    terminal name
@@ -15,7 +13,8 @@ import Debug.Trace
 %name       setClause         setClause
 
 %tokentype  { Token.Lexeme }
-%error      { parseError }
+%monad      { ParseResult } { thenP } { returnP }
+%error      { parseErrorP }
 
 %token
    int          { Token.Lex _ (Token.Int _) }
@@ -98,12 +97,3 @@ expression
   : int {
     Ast.Int (exInt $1) (pos $1)
   }
-
-{
-parseExpression :: String -> Ast.Expression
-parseExpression code = expression $ Lexer.scanLexemes code
-
-parseSetClause :: String -> Ast.SetClause
-parseSetClause code = setClause tokens
-  where tokens = Lexer.scanLexemes code
-}

@@ -41,3 +41,5 @@ data LexPos = LP
 
 data Lexeme = Lex LexPos Token
   deriving (Eq, Read, Show)
+
+emptyPos = LP 0 0 0 0

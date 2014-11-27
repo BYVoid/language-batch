@@ -2,9 +2,13 @@
 {-# LANGUAGE FlexibleInstances #-}
 module Language.Batch.ParserStage2(parse) where
 
+import Debug.Trace
 import qualified Language.Batch.Ast.Positioned as Ast
+import qualified Language.Batch.Lexer as Lexer
 import Language.Batch.ParserStage2Happy
+import Language.Batch.ParserUtils
 import qualified Language.Batch.SyntaxTree as ST
+import qualified Language.Batch.Token as Token
 
 parse :: ST.Program -> Ast.Program
 parse program = convert program
@@ -30,4 +34,10 @@ instance Convertable ST.LabelName Ast.Identifier where
   convert (ST.LabelName label pos) = Ast.Identifier label pos
 
 instance Convertable ST.Unparsed Ast.SetClause where
-  convert (ST.Unparsed code pos) = parseSetClause code
+  convert (ST.Unparsed code pos) = parseSetClause code pos
+
+parseSetClause :: String -> Token.LexPos -> Ast.SetClause
+parseSetClause code offset = case setClause tokens of
+  ParseOk result -> result
+  ParseFail pos -> displayError pos
+  where tokens = Lexer.scanLexemes code

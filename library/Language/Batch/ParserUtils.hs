@@ -6,6 +6,26 @@ import qualified Language.Batch.Token as Token
 import qualified Language.Batch.SyntaxTree as ST
 import Prelude hiding(span)
 
+data ParseResult a
+  = ParseOk a
+  | ParseFail Token.LexPos
+
+thenP :: ParseResult a -> (a -> ParseResult b) -> ParseResult b
+thenP monad func = case monad of
+  ParseOk res -> func res
+  ParseFail pos -> ParseFail pos
+
+returnP :: a -> ParseResult a
+returnP res = ParseOk res
+
+parseErrorP :: [Token.Lexeme] -> ParseResult a
+parseErrorP [] = error "Unknown parsing error. This could be a bug!"
+parseErrorP lexemes =
+  ParseFail position
+  where
+    lexeme = head lexemes
+    position = pos lexeme
+
 dummyPos = Token.LP 0 0 0 0
 
 class Posed a where
@@ -53,13 +73,10 @@ exStr (Token.Lex _ (Token.PercentVar str)) = str
 unparsed :: Token.Lexeme -> ST.Unparsed
 unparsed lexeme = ST.Unparsed (exStr lexeme) (pos lexeme)
 
-parseError :: [Token.Lexeme] -> a
-parseError [] = error "Unknown error"
-parseError lexemes =
+displayError :: Token.LexPos -> a
+displayError position =
   error $ "Parse error at " ++ (show line) ++ ":" ++ (show column)
   where
-    lexeme = head lexemes
-    position = pos lexeme
     line = Token.lpLine position
     column = Token.lpColumn position
 
