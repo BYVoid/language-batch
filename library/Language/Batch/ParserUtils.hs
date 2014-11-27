@@ -81,8 +81,8 @@ displayError position =
     line = Token.lpLine position
     column = Token.lpColumn position
 
-escape :: [Ast.VarString] -> [Ast.VarString]
-escape raw = reverse $ foldl process [] raw
+unescape :: [Ast.VarString] -> [Ast.VarString]
+unescape raw = reverse $ foldl process [] raw
   where
     process acc varstr = case acc of
       [] -> [varstr]

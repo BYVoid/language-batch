@@ -46,7 +46,7 @@ setClause
     Ast.ArithAssign $4 $6 $ span (pos $1) (pos $7)
   }
   | "/p" white parameter "=" varstrings {
-    Ast.PromptAssign $3 (escape $5) $ span (pos $1) (pos $5)
+    Ast.PromptAssign $3 (unescape $5) $ span (pos $1) (pos $5)
   }
   | "/p" white '"' parameter "=" varstrings  {
     Ast.PromptAssign $4 (dropLastQuote $6) $ span (pos $1) (pos $6)
@@ -63,7 +63,7 @@ setClauseNoSlash
     Ast.SetDisplay (Ast.Identifier "\"" (pos $1)) (pos $1)
   }
   | parameter "=" varstrings {
-    Ast.StrAssign $1 (escape $3) $ span (pos $1) (pos $3)
+    Ast.StrAssign $1 (unescape $3) $ span (pos $1) (pos $3)
   }
   | '"' parameter "=" varstrings  {
     Ast.StrAssign $2 (dropLastQuote $4) $ span (pos $1) (pos $4)
