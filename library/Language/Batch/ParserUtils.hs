@@ -82,7 +82,28 @@ displayError position =
     column = Token.lpColumn position
 
 escape :: [Ast.VarString] -> [Ast.VarString]
-escape raw = raw -- TODO escape ^
+escape raw = reverse $ foldl process [] raw
+  where
+    process acc varstr = case acc of
+      [] -> [varstr]
+      last : rest -> case last of
+        Ast.String "^" _ -> doEscape varstr last rest
+        _ -> varstr : acc
+    doEscape varstr last rest = case varstr of
+      Ast.String char _ -> case char of
+        "(" -> escaped
+        ")" -> escaped
+        "\"" -> escaped
+        "^" -> escaped
+        "&" -> escaped
+        "|" -> escaped
+        ">" -> escaped
+        "<" -> escaped
+        _ -> noEscape
+      _ -> noEscape
+      where
+        escaped = varstr : rest
+        noEscape = last : rest
 
 dropLastQuote :: [Ast.VarString] -> [Ast.VarString]
 dropLastQuote varstrings =

@@ -1,0 +1,78 @@
+[ Lex
+    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 12 }
+    (Set "var00=()")
+, Lex
+    LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 13 , lpLength = 14 }
+    (Set "var01=^(^)")
+, Lex
+    LP { lpLine = 3 , lpColumn = 1 , lpStartByte = 28 , lpLength = 14 }
+    (Set "\"var02=()\"")
+, Lex
+    LP { lpLine = 4 , lpColumn = 1 , lpStartByte = 43 , lpLength = 16 }
+    (Set "\"var03=^(^)\"")
+, Lex
+    LP { lpLine = 5 , lpColumn = 1 , lpStartByte = 60 , lpLength = 12 }
+    (Set "var04=\"\"")
+, Lex
+    LP { lpLine = 6 , lpColumn = 1 , lpStartByte = 73 , lpLength = 14 }
+    (Set "var05=^\"^\"")
+, Lex
+    LP { lpLine = 7 , lpColumn = 1 , lpStartByte = 88 , lpLength = 14 }
+    (Set "\"var06=\"\"\"")
+, Lex
+    LP
+      { lpLine = 8 , lpColumn = 1 , lpStartByte = 103 , lpLength = 16 }
+    (Set "\"var07=^\"^\"\"")
+, Lex
+    LP
+      { lpLine = 9 , lpColumn = 1 , lpStartByte = 120 , lpLength = 12 }
+    (Set "var08=^^")
+, Lex
+    LP
+      { lpLine = 10 , lpColumn = 1 , lpStartByte = 133 , lpLength = 13 }
+    (Set "\"var09=^\"")
+, Lex
+    LP
+      { lpLine = 11 , lpColumn = 1 , lpStartByte = 147 , lpLength = 14 }
+    (Set "\"var10=^^\"")
+, Lex
+    LP
+      { lpLine = 12 , lpColumn = 1 , lpStartByte = 162 , lpLength = 12 }
+    (Set "var11=^&")
+, Lex
+    LP
+      { lpLine = 13 , lpColumn = 1 , lpStartByte = 175 , lpLength = 13 }
+    (Set "\"var12=&\"")
+, Lex
+    LP
+      { lpLine = 14 , lpColumn = 1 , lpStartByte = 189 , lpLength = 14 }
+    (Set "\"var13=^&\"")
+, Lex
+    LP
+      { lpLine = 15 , lpColumn = 1 , lpStartByte = 204 , lpLength = 12 }
+    (Set "var14=^|")
+, Lex
+    LP
+      { lpLine = 16 , lpColumn = 1 , lpStartByte = 217 , lpLength = 13 }
+    (Set "\"var15=|\"")
+, Lex
+    LP
+      { lpLine = 17 , lpColumn = 1 , lpStartByte = 231 , lpLength = 14 }
+    (Set "\"var16=^|\"")
+, Lex
+    LP
+      { lpLine = 18 , lpColumn = 1 , lpStartByte = 246 , lpLength = 14 }
+    (Set "var17=^<^>")
+, Lex
+    LP
+      { lpLine = 19 , lpColumn = 1 , lpStartByte = 261 , lpLength = 14 }
+    (Set "\"var18=<>\"")
+, Lex
+    LP
+      { lpLine = 20 , lpColumn = 1 , lpStartByte = 276 , lpLength = 16 }
+    (Set "\"var19=^<^>\"")
+, Lex
+    LP
+      { lpLine = 21 , lpColumn = 1 , lpStartByte = 293 , lpLength = 7 }
+    (Set "var")
+]

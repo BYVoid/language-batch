@@ -52,9 +52,9 @@ instance Renderable [PStatement a] where
 
 instance Renderable (PSetClause a) where
   render clause = case clause of
-    StrAssign ident varstrs _ -> build ident "=" varstrs
-    ArithAssign ident expr _ -> build "/a " ident "=" expr
-    PromptAssign ident varstrs _ -> build "/p " ident "=" varstrs
+    StrAssign ident varstrs _ -> build '"' ident "=" varstrs '"'
+    ArithAssign ident expr _ -> build "/a " '"' ident "=" expr '"'
+    PromptAssign ident varstrs _ -> build "/p " '"' ident "=" varstrs '"'
     SetDisplay ident _ -> render ident
 
 instance Renderable (PVarString a) where

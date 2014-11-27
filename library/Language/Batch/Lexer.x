@@ -81,6 +81,11 @@ tokens :-
   "||"              { makeLexeme Or }
   "("               { makeLexeme LParen }
   ")"               { makeLexeme RParen }
+  "<"               { makeLexeme Less }
+  ">"               { makeLexeme Greater }
+  "<="              { makeLexeme LessEqual }
+  ">="              { makeLexeme GreaterEqual }
+  "^"               { makeLexeme Caret }
   $slash $a         { makeLexeme SlashA }
   $slash $p         { makeLexeme SlashP }
   $doublequote      { makeLexeme DoubleQuote }

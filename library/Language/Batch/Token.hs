@@ -26,6 +26,11 @@ data Token
   | Or
   | LParen
   | RParen
+  | Caret
+  | Less
+  | Greater
+  | LessEqual
+  | GreaterEqual
   | SlashA
   | SlashP
   | DoubleQuote

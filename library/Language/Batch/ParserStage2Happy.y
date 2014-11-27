@@ -23,6 +23,13 @@ import Prelude hiding(span)
    white        { Token.Lex _ (Token.White _) }
    "="          { Token.Lex _ Token.Assign }
    '"'          { Token.Lex _ Token.DoubleQuote }
+   '&'          { Token.Lex _ Token.AndSign }
+   '|'          { Token.Lex _ Token.Pipe }
+   '('          { Token.Lex _ Token.LParen }
+   ')'          { Token.Lex _ Token.RParen }
+   '^'          { Token.Lex _ Token.Caret }
+   '<'          { Token.Lex _ Token.Less }
+   '>'          { Token.Lex _ Token.Greater }
    "/a"         { Token.Lex _ Token.SlashA }
    "/p"         { Token.Lex _ Token.SlashP }
 
@@ -79,6 +86,27 @@ varstring
   }
   | '"' {
     Ast.String "\"" (pos $1)
+  }
+  | '&' {
+    Ast.String "&" (pos $1)
+  }
+  | '|' {
+    Ast.String "|" (pos $1)
+  }
+  | '(' {
+    Ast.String "(" (pos $1)
+  }
+  | ')' {
+    Ast.String ")" (pos $1)
+  }
+  | '^' {
+    Ast.String "^" (pos $1)
+  }
+  | '<' {
+    Ast.String "<" (pos $1)
+  }
+  | '>' {
+    Ast.String ">" (pos $1)
   }
   | var {
     Ast.Variable $1 (pos $1)
