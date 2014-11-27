@@ -44,7 +44,7 @@ statement
     ST.Goto $2 $ span (pos $1) (ST.pos $2)
   }
   | set {
-    ST.Set (unparsed $1) (pos $1)
+    ST.Set (unparsed $1 4) (pos $1)
   }
 
 statements

@@ -37,7 +37,7 @@ instance Convertable ST.Unparsed Ast.SetClause where
   convert (ST.Unparsed code pos) = parseSetClause code pos
 
 parseSetClause :: String -> Token.LexPos -> Ast.SetClause
-parseSetClause code offset = case setClause tokens of
+parseSetClause code startPos = case setClause tokens of
   ParseOk result -> result
-  ParseFail pos -> displayError pos
+  ParseFail pos -> displayError $ Token.startPos pos startPos
   where tokens = Lexer.scanLexemes code

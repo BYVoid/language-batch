@@ -70,8 +70,9 @@ exStr (Token.Lex _ (Token.DoubleColon str)) = str
 exStr (Token.Lex _ (Token.Set str)) = str
 exStr (Token.Lex _ (Token.PercentVar str)) = str
 
-unparsed :: Token.Lexeme -> ST.Unparsed
-unparsed lexeme = ST.Unparsed (exStr lexeme) (pos lexeme)
+unparsed :: Token.Lexeme -> Int -> ST.Unparsed
+unparsed lexeme offset =
+  ST.Unparsed (exStr lexeme) (Token.offsetPos (pos lexeme) offset)
 
 displayError :: Token.LexPos -> a
 displayError position =

@@ -5,7 +5,7 @@ Program
               Unparsed
                 { unparsed_string = "var1=Hello world"
                 , unparsed_pos =
-                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 20 }
+                    LP { lpLine = 1 , lpColumn = 5 , lpStartByte = 4 , lpLength = 20 }
                 }
           , stmt_pos =
               LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 20 }
@@ -15,7 +15,7 @@ Program
               Unparsed
                 { unparsed_string = "var2=\"Hello world 2\""
                 , unparsed_pos =
-                    LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 21 , lpLength = 24 }
+                    LP { lpLine = 2 , lpColumn = 5 , lpStartByte = 25 , lpLength = 24 }
                 }
           , stmt_pos =
               LP { lpLine = 2 , lpColumn = 1 , lpStartByte = 21 , lpLength = 24 }
@@ -25,7 +25,7 @@ Program
               Unparsed
                 { unparsed_string = "\"var3=Hello world 3\""
                 , unparsed_pos =
-                    LP { lpLine = 3 , lpColumn = 1 , lpStartByte = 46 , lpLength = 24 }
+                    LP { lpLine = 3 , lpColumn = 5 , lpStartByte = 50 , lpLength = 24 }
                 }
           , stmt_pos =
               LP { lpLine = 3 , lpColumn = 1 , lpStartByte = 46 , lpLength = 24 }
@@ -35,7 +35,7 @@ Program
               Unparsed
                 { unparsed_string = "\"var4=\"Hello world 4\"\""
                 , unparsed_pos =
-                    LP { lpLine = 4 , lpColumn = 1 , lpStartByte = 71 , lpLength = 26 }
+                    LP { lpLine = 4 , lpColumn = 5 , lpStartByte = 75 , lpLength = 26 }
                 }
           , stmt_pos =
               LP { lpLine = 4 , lpColumn = 1 , lpStartByte = 71 , lpLength = 26 }
@@ -45,7 +45,8 @@ Program
               Unparsed
                 { unparsed_string = "\"var5=wtf"
                 , unparsed_pos =
-                    LP { lpLine = 5 , lpColumn = 1 , lpStartByte = 98 , lpLength = 13 }
+                    LP
+                      { lpLine = 5 , lpColumn = 5 , lpStartByte = 102 , lpLength = 13 }
                 }
           , stmt_pos =
               LP { lpLine = 5 , lpColumn = 1 , lpStartByte = 98 , lpLength = 13 }
@@ -56,7 +57,7 @@ Program
                 { unparsed_string = "\"var6="
                 , unparsed_pos =
                     LP
-                      { lpLine = 6 , lpColumn = 1 , lpStartByte = 112 , lpLength = 10 }
+                      { lpLine = 6 , lpColumn = 5 , lpStartByte = 116 , lpLength = 10 }
                 }
           , stmt_pos =
               LP
@@ -80,7 +81,7 @@ Program
                 { unparsed_string = "/a  var9=4"
                 , unparsed_pos =
                     LP
-                      { lpLine = 9 , lpColumn = 1 , lpStartByte = 153 , lpLength = 14 }
+                      { lpLine = 9 , lpColumn = 5 , lpStartByte = 157 , lpLength = 14 }
                 }
           , stmt_pos =
               LP
@@ -92,7 +93,7 @@ Program
                 { unparsed_string = "/A \"var10=6\""
                 , unparsed_pos =
                     LP
-                      { lpLine = 10 , lpColumn = 1 , lpStartByte = 168 , lpLength = 16 }
+                      { lpLine = 10 , lpColumn = 5 , lpStartByte = 172 , lpLength = 16 }
                 }
           , stmt_pos =
               LP
@@ -104,7 +105,7 @@ Program
                 { unparsed_string = "/p\tvar11=Please input"
                 , unparsed_pos =
                     LP
-                      { lpLine = 11 , lpColumn = 1 , lpStartByte = 185 , lpLength = 25 }
+                      { lpLine = 11 , lpColumn = 5 , lpStartByte = 189 , lpLength = 25 }
                 }
           , stmt_pos =
               LP
@@ -116,7 +117,7 @@ Program
                 { unparsed_string = "var12= Con%var1% cat %var2%"
                 , unparsed_pos =
                     LP
-                      { lpLine = 12 , lpColumn = 1 , lpStartByte = 211 , lpLength = 31 }
+                      { lpLine = 12 , lpColumn = 5 , lpStartByte = 215 , lpLength = 31 }
                 }
           , stmt_pos =
               LP
@@ -128,7 +129,7 @@ Program
                 { unparsed_string = "var"
                 , unparsed_pos =
                     LP
-                      { lpLine = 13 , lpColumn = 1 , lpStartByte = 243 , lpLength = 7 }
+                      { lpLine = 13 , lpColumn = 5 , lpStartByte = 247 , lpLength = 7 }
                 }
           , stmt_pos =
               LP
@@ -140,7 +141,7 @@ Program
                 { unparsed_string = "\"var1\""
                 , unparsed_pos =
                     LP
-                      { lpLine = 14 , lpColumn = 1 , lpStartByte = 251 , lpLength = 10 }
+                      { lpLine = 14 , lpColumn = 5 , lpStartByte = 255 , lpLength = 10 }
                 }
           , stmt_pos =
               LP
@@ -152,7 +153,7 @@ Program
                 { unparsed_string = "\""
                 , unparsed_pos =
                     LP
-                      { lpLine = 15 , lpColumn = 1 , lpStartByte = 262 , lpLength = 5 }
+                      { lpLine = 15 , lpColumn = 5 , lpStartByte = 266 , lpLength = 5 }
                 }
           , stmt_pos =
               LP
