@@ -20,11 +20,12 @@ Library
   Exposed-Modules:      Language.Batch,
                         Language.Batch.Ast,
                         Language.Batch.Ast.Positioned,
-                        Language.Batch.Lexer,
                         Language.Batch.PrettyPrint,
                         Language.Batch.SyntaxTree,
                         Language.Batch.Token
-  Other-Modules:        Language.Batch.ParserStage1,
+  Other-Modules:        Language.Batch.Lexer,
+                        Language.Batch.LexerRule,
+                        Language.Batch.ParserStage1,
                         Language.Batch.ParserStage2,
                         Language.Batch.ParserStage2Happy,
                         Language.Batch.ParserUtils
