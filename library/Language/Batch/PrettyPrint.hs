@@ -52,9 +52,17 @@ instance Renderable [PStatement a] where
 
 instance Renderable (PSetClause a) where
   render clause = case clause of
-    StrAssign ident varstrs _ -> build '"' ident "=" varstrs '"'
+    StrAssign ident varstrs _ ->
+      if needToEscape varstrs then
+        build '"' ident "=" varstrs '"'
+      else
+        build ident "=" varstrs
+    PromptAssign ident varstrs _ ->
+      if needToEscape varstrs then
+        build "/p " '"' ident "=" varstrs '"'
+      else
+        build "/p " ident "=" varstrs
     ArithAssign ident expr _ -> build "/a " '"' ident "=" expr '"'
-    PromptAssign ident varstrs _ -> build "/p " '"' ident "=" varstrs '"'
     SetDisplay ident _ -> render ident
 
 instance Renderable (PVarString a) where
@@ -73,6 +81,15 @@ instance Renderable (PExpression a) where
 
 instance Renderable (PIdentifier a) where
   render (Identifier ident _) = render ident
+
+needToEscape :: [PVarString a] -> Bool
+needToEscape varstrs = any hasEscapeNeededChar varstrs
+  where
+    hasEscapeNeededChar varstr = case varstr of
+      String str _ ->
+        let escapeNeededChars = ['(', ')', '"', '^', '&', '|', '>', '<'] in
+        any (\char -> elem char str) escapeNeededChars
+      Variable _ _ -> False
 
 -- Below is the implementation of varidic parameter of build
 class Buildable a where
