@@ -55,7 +55,7 @@ dispatch (Args input target opts) = do
         let fileName = target ++ suffix
         writeFile fileName (contents ++ "\n")
   when (optTokens opts) (outputWithSuffix ".tokens" (ppShow tokens))
-  when (optSt opts) (outputWithSuffix ".st" (ppShow syntaxTree))
+  when (optSt opts) (outputWithSuffix ".syntaxtree" (ppShow syntaxTree))
   when (optAst opts) (outputWithSuffix ".ast" (ppShow ast))
   Batch.generateCodeToFile ast target
 

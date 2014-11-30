@@ -42,7 +42,7 @@ testParser1 = do
       assertEqual (show st) expected st
   forM_ testCases $ \testcase ->
     testParserFile (testCaseDir ++ "/" ++ testcase ++ ".bat")
-                   (testCaseDir ++ "/out/" ++ testcase ++ ".bat.st")
+                   (testCaseDir ++ "/out/" ++ testcase ++ ".bat.syntaxtree")
 
 testParser2 :: Assertion
 testParser2 = do
