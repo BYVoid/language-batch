@@ -1,6 +1,5 @@
 {
 module Language.Batch.LexerRule where
-import Language.Batch.Lexer()
 import Language.Batch.Token
 }
 

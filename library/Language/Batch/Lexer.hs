@@ -1,6 +1,7 @@
-module Language.Batch.LexerRule where
+module Language.Batch.Lexer where
 
 import Language.Batch.LexerRule
+import Language.Batch.Token
 
 -- Returns scanned lexemes with Right [Token] or Left String on error
 scanLexemesSafe :: String -> Either String [Lexeme]
