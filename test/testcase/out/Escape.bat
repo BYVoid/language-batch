@@ -18,4 +18,11 @@ set "var16=^|"
 set "var17=<>"
 set "var18=<>"
 set "var19=^<^>"
+set var20=%%
+set var21=%%
+set "var22=!"
+set "var23=!"
+set "var24=^!"
+set "var25=^!"
+set "var26=^^!"
 set var

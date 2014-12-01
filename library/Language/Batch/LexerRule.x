@@ -86,6 +86,8 @@ tokens :-
   "<="              { makeLexeme LessEqual }
   ">="              { makeLexeme GreaterEqual }
   "^"               { makeLexeme Caret }
+  "%"               { makeLexeme Percent }
+  "!"               { makeLexeme Exclamation }
   $slash $a         { makeLexeme SlashA }
   $slash $p         { makeLexeme SlashP }
   $doublequote      { makeLexeme DoubleQuote }

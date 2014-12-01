@@ -87,7 +87,7 @@ needToEscape varstrs = any hasEscapeNeededChar varstrs
   where
     hasEscapeNeededChar varstr = case varstr of
       String str _ ->
-        let escapeNeededChars = ['(', ')', '"', '^', '&', '|', '>', '<'] in
+        let escapeNeededChars = ['(', ')', '"', '^', '&', '|', '!', '>', '<'] in
         any (\char -> elem char str) escapeNeededChars
       Variable _ _ -> False
 

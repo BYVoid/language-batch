@@ -27,6 +27,8 @@ data Token
   | LParen
   | RParen
   | Caret
+  | Percent
+  | Exclamation
   | Less
   | Greater
   | LessEqual

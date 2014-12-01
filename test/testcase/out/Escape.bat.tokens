@@ -73,6 +73,34 @@
     (Set "\"var19=^<^>\"")
 , Lex
     LP
-      { lpLine = 21 , lpColumn = 1 , lpStartByte = 293 , lpLength = 7 }
+      { lpLine = 21 , lpColumn = 1 , lpStartByte = 293 , lpLength = 12 }
+    (Set "var20=%%")
+, Lex
+    LP
+      { lpLine = 22 , lpColumn = 1 , lpStartByte = 306 , lpLength = 14 }
+    (Set "\"var21=%%\"")
+, Lex
+    LP
+      { lpLine = 23 , lpColumn = 1 , lpStartByte = 321 , lpLength = 11 }
+    (Set "var22=!")
+, Lex
+    LP
+      { lpLine = 24 , lpColumn = 1 , lpStartByte = 333 , lpLength = 12 }
+    (Set "var23=^!")
+, Lex
+    LP
+      { lpLine = 25 , lpColumn = 1 , lpStartByte = 346 , lpLength = 14 }
+    (Set "\"var24=^!\"")
+, Lex
+    LP
+      { lpLine = 26 , lpColumn = 1 , lpStartByte = 361 , lpLength = 13 }
+    (Set "var25=^^!")
+, Lex
+    LP
+      { lpLine = 27 , lpColumn = 1 , lpStartByte = 375 , lpLength = 15 }
+    (Set "\"var26=^^!\"")
+, Lex
+    LP
+      { lpLine = 28 , lpColumn = 1 , lpStartByte = 391 , lpLength = 7 }
     (Set "var")
 ]

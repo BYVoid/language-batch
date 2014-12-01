@@ -82,13 +82,20 @@ displayError position =
     column = Token.lpColumn position
 
 unescape :: [Ast.VarString] -> [Ast.VarString]
-unescape raw = reverse $ foldl process [] raw
+unescape raw = reverse $ unescaped
   where
+    unescaped = map fst unescapedWithMarks
+    unescapedWithMarks = foldl process [] raw
+    -- varstr is the current char
+    -- last is the previous char
+    -- (varstr, True) means varstr is unescaped
+    -- (varstr, False) means varstr is not escaped
+    process :: [(Ast.VarString, Bool)] -> Ast.VarString -> [(Ast.VarString, Bool)]
     process acc varstr = case acc of
-      [] -> [varstr]
+      [] -> [(varstr, False)]
       last : rest -> case last of
-        Ast.String "^" _ -> doEscape varstr last rest
-        _ -> varstr : acc
+        (Ast.String "^"  _, False) -> doEscape varstr last rest
+        _ -> (varstr, False) : acc
     doEscape varstr last rest = case varstr of
       Ast.String char _ -> case char of
         "(" -> escaped
@@ -97,12 +104,13 @@ unescape raw = reverse $ foldl process [] raw
         "^" -> escaped
         "&" -> escaped
         "|" -> escaped
+        "!" -> escaped
         ">" -> escaped
         "<" -> escaped
         _ -> noEscape
       _ -> noEscape
       where
-        escaped = varstr : rest
+        escaped = (varstr, True) : rest
         noEscape = last : rest
 
 dropLastQuote :: [Ast.VarString] -> [Ast.VarString]

@@ -229,16 +229,100 @@ Program
       , Set
           { stmt_set =
               Unparsed
-                { unparsed_string = "var"
+                { unparsed_string = "var20=%%"
                 , unparsed_pos =
                     LP
-                      { lpLine = 21 , lpColumn = 5 , lpStartByte = 297 , lpLength = 7 }
+                      { lpLine = 21 , lpColumn = 5 , lpStartByte = 297 , lpLength = 12 }
                 }
           , stmt_pos =
               LP
-                { lpLine = 21 , lpColumn = 1 , lpStartByte = 293 , lpLength = 7 }
+                { lpLine = 21 , lpColumn = 1 , lpStartByte = 293 , lpLength = 12 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "\"var21=%%\""
+                , unparsed_pos =
+                    LP
+                      { lpLine = 22 , lpColumn = 5 , lpStartByte = 310 , lpLength = 14 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 22 , lpColumn = 1 , lpStartByte = 306 , lpLength = 14 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "var22=!"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 23 , lpColumn = 5 , lpStartByte = 325 , lpLength = 11 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 23 , lpColumn = 1 , lpStartByte = 321 , lpLength = 11 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "var23=^!"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 24 , lpColumn = 5 , lpStartByte = 337 , lpLength = 12 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 24 , lpColumn = 1 , lpStartByte = 333 , lpLength = 12 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "\"var24=^!\""
+                , unparsed_pos =
+                    LP
+                      { lpLine = 25 , lpColumn = 5 , lpStartByte = 350 , lpLength = 14 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 25 , lpColumn = 1 , lpStartByte = 346 , lpLength = 14 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "var25=^^!"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 26 , lpColumn = 5 , lpStartByte = 365 , lpLength = 13 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 26 , lpColumn = 1 , lpStartByte = 361 , lpLength = 13 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "\"var26=^^!\""
+                , unparsed_pos =
+                    LP
+                      { lpLine = 27 , lpColumn = 5 , lpStartByte = 379 , lpLength = 15 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 27 , lpColumn = 1 , lpStartByte = 375 , lpLength = 15 }
+          }
+      , Set
+          { stmt_set =
+              Unparsed
+                { unparsed_string = "var"
+                , unparsed_pos =
+                    LP
+                      { lpLine = 28 , lpColumn = 5 , lpStartByte = 395 , lpLength = 7 }
+                }
+          , stmt_pos =
+              LP
+                { lpLine = 28 , lpColumn = 1 , lpStartByte = 391 , lpLength = 7 }
           }
       ]
   , program_pos =
-      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 300 }
+      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 398 }
   }

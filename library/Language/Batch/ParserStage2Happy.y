@@ -28,6 +28,8 @@ import Prelude hiding(span)
    '('          { Token.Lex _ Token.LParen }
    ')'          { Token.Lex _ Token.RParen }
    '^'          { Token.Lex _ Token.Caret }
+   '%'          { Token.Lex _ Token.Percent }
+   '!'          { Token.Lex _ Token.Exclamation }
    '<'          { Token.Lex _ Token.Less }
    '>'          { Token.Lex _ Token.Greater }
    "/a"         { Token.Lex _ Token.SlashA }
@@ -101,6 +103,12 @@ varstring
   }
   | '^' {
     Ast.String "^" (pos $1)
+  }
+  | '%' {
+    Ast.String "%" (pos $1)
+  }
+  | '!' {
+    Ast.String "!" (pos $1)
   }
   | '<' {
     Ast.String "<" (pos $1)

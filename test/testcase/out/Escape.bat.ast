@@ -555,6 +555,197 @@ Program
           }
       , Set
           { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var20"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 5 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "%"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 7 , lpStartByte = 6 , lpLength = 1 }
+                        }
+                    , String
+                        { varstr_str = "%"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 8 , lpStartByte = 7 , lpLength = 1 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 8 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 21 , lpColumn = 1 , lpStartByte = 293 , lpLength = 12 }
+          }
+      , Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var21"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 2 , lpStartByte = 1 , lpLength = 5 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "%"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 8 , lpStartByte = 7 , lpLength = 1 }
+                        }
+                    , String
+                        { varstr_str = "%"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 9 , lpStartByte = 8 , lpLength = 1 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 10 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 22 , lpColumn = 1 , lpStartByte = 306 , lpLength = 14 }
+          }
+      , Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var22"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 5 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "!"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 7 , lpStartByte = 6 , lpLength = 1 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 7 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 23 , lpColumn = 1 , lpStartByte = 321 , lpLength = 11 }
+          }
+      , Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var23"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 5 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "!"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 8 , lpStartByte = 7 , lpLength = 1 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 8 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 24 , lpColumn = 1 , lpStartByte = 333 , lpLength = 12 }
+          }
+      , Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var24"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 2 , lpStartByte = 1 , lpLength = 5 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "^"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 8 , lpStartByte = 7 , lpLength = 1 }
+                        }
+                    , String
+                        { varstr_str = "!"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 9 , lpStartByte = 8 , lpLength = 1 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 10 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 25 , lpColumn = 1 , lpStartByte = 346 , lpLength = 14 }
+          }
+      , Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var25"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 5 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "^"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 8 , lpStartByte = 7 , lpLength = 1 }
+                        }
+                    , String
+                        { varstr_str = "!"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 9 , lpStartByte = 8 , lpLength = 1 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 9 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 26 , lpColumn = 1 , lpStartByte = 361 , lpLength = 13 }
+          }
+      , Set
+          { stmt_set =
+              StrAssign
+                { set_ident =
+                    Identifier
+                      { ident_ident = "var26"
+                      , ident_annot =
+                          LP { lpLine = 1 , lpColumn = 2 , lpStartByte = 1 , lpLength = 5 }
+                      }
+                , set_varstrs =
+                    [ String
+                        { varstr_str = "^"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 8 , lpStartByte = 7 , lpLength = 1 }
+                        }
+                    , String
+                        { varstr_str = "^"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 9 , lpStartByte = 8 , lpLength = 1 }
+                        }
+                    , String
+                        { varstr_str = "!"
+                        , varstr_annot =
+                            LP { lpLine = 1 , lpColumn = 10 , lpStartByte = 9 , lpLength = 1 }
+                        }
+                    ]
+                , set_annot =
+                    LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 11 }
+                }
+          , stmt_annot =
+              LP
+                { lpLine = 27 , lpColumn = 1 , lpStartByte = 375 , lpLength = 15 }
+          }
+      , Set
+          { stmt_set =
               SetDisplay
                 { set_ident =
                     Identifier
@@ -567,9 +758,9 @@ Program
                 }
           , stmt_annot =
               LP
-                { lpLine = 21 , lpColumn = 1 , lpStartByte = 293 , lpLength = 7 }
+                { lpLine = 28 , lpColumn = 1 , lpStartByte = 391 , lpLength = 7 }
           }
       ]
   , program_annot =
-      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 300 }
+      LP { lpLine = 1 , lpColumn = 1 , lpStartByte = 0 , lpLength = 398 }
   }
