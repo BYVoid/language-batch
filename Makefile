@@ -11,4 +11,7 @@ dist:
 clean:
 	cabal clean
 
+update:
+	script/update.sh
+
 .PHONY: batch-beautifier clean test
